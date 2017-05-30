@@ -1,4 +1,5 @@
 import {Application} from 'express';
+import {Injector} from 'injecty';
 import 'reflect-metadata';
 
 let controllers: Array<typeof Function> = [];
@@ -19,7 +20,7 @@ export function configure(app: Application){
     console.log('Setup Controllers...');
     for(let Controller of controllers) {
         console.log('  ', Controller.name);
-        let controller = new Controller();//Injector().get(Controller);
+        let controller = Injector.get(Controller);
 
         for(let method of Object.getOwnPropertyNames(Controller.prototype)){
             let binding = Reflect.getMetadata('route-deco:mapping', Controller.prototype, method);
