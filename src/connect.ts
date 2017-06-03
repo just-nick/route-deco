@@ -1,5 +1,5 @@
 import {Application} from 'express';
-import {Injector} from 'injecty';
+import {Injector} from 'auto-injecty';
 import 'reflect-metadata';
 
 let controllers: Array<typeof Function> = [];
